@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".Signup">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/centerline1"
+        android:layout_centerInParent="true">
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_above="@+id/centerline1"
+        android:layout_marginBottom="150dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New User"
+            android:textColor="#EEFF8585"
+            android:textSize="42sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nice To See You Here"
+            android:textColor="#00BCD4"
+            android:textSize="23sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/centerline1"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/email1"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        app:boxStrokeColor="@color/white"
+        android:textColorHint="#A6A6A6"
+        app:hintTextColor="@color/white"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp">
+
+        <EditText
+            android:id="@+id/signupemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Email"
+            android:textCursorDrawable="@drawable/cursor"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/centerline1"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/password1"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        app:boxStrokeColor="@color/white"
+        android:textColorHint="#A6A6A6"
+        app:hintTextColor="@color/white"
+        style="@style/FilledBoxEndIconTint"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="password_toggle"
+        >
+
+        <EditText
+            android:id="@+id/signuppassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your Password"
+            android:textCursorDrawable="@drawable/cursor"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password1"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/password2"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        app:boxStrokeColor="@color/white"
+        android:textColorHint="#A6A6A6"
+        app:hintTextColor="@color/white"
+        style="@style/FilledBoxEndIconTint"
+        app:boxCornerRadiusBottomEnd="10dp"
+        app:boxCornerRadiusBottomStart="10dp"
+        app:boxCornerRadiusTopEnd="10dp"
+        app:boxCornerRadiusTopStart="10dp"
+        app:endIconMode="password_toggle">
+
+        <EditText
+            android:id="@+id/confirmpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password"
+            android:textCursorDrawable="@drawable/cursor"
+            android:inputType="textPassword"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck">
+
+        </EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:id="@+id/signup"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/password2"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/gotologin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/signup"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:text="Want To Log In?"
+        android:textStyle=""
+        android:textAlignment="center"
+        android:textColor="#A6A6A6">
+
+    </TextView>
+
+</RelativeLayout>
