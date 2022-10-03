@@ -6,13 +6,29 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Notes"
-
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notes_App">
         <activity
+            android:name=".details"
+            android:exported="false"
+            android:theme="@style/Theme2.Notes_App" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".editnoteactivity"
+            android:exported="false"
+            android:theme="@style/Theme2.Notes_App" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CreateNotes"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme2.Notes_App" />
         <activity
             android:name=".Notes"
             android:exported="false" />

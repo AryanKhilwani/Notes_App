@@ -24,59 +24,61 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-public class CreateNotes extends AppCompatActivity {
-
-    EditText mcreatenote,mcreatecontent;
-    FloatingActionButton msavenote;
+public class editnoteactivity extends AppCompatActivity {
+    Intent data;
+    EditText meditnote,meditcontent;
+    FloatingActionButton esavenote;
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseFirestore firebaseFirestore;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_notes);
-
-        msavenote=findViewById(R.id.savenote);
-        mcreatenote=findViewById(R.id.createnote);
-        mcreatecontent=findViewById(R.id.createcontent);
-
-
-        Toolbar toolBar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolBar);
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
+        setContentView(R.layout.activity_editnoteactivity);
+        meditcontent=findViewById(R.id.editcontent);
+        meditnote=findViewById(R.id.editnote);
+        esavenote=findViewById(R.id.esavenote);
         firebaseAuth=FirebaseAuth.getInstance();
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        Toolbar toolbar=findViewById(R.id.etoolbar);
+        setSupportActionBar(toolbar);
 
-        msavenote.setOnClickListener(new View.OnClickListener(){
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        data=getIntent();
+        meditnote.setText(data.getStringExtra("title"));
+        meditcontent.setText(data.getStringExtra("content"));
+        esavenote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String title=mcreatenote.getText().toString();
-                String content=mcreatecontent.getText().toString();
-                if(title.isEmpty()||content.isEmpty()){
-                    Toast.makeText(getApplicationContext(),"Both Field are required",Toast.LENGTH_SHORT).show();
+                String ntitle=meditnote.getText().toString();
+                String ncontent=meditcontent.getText().toString();
+                if(ntitle.isEmpty()||ncontent.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"Both Fields are necessary",Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 else{
-                    DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("mynotes").document();
-                    Map<String,Object> note=new HashMap();
-                    note.put("title",title);
-                    note.put("content",content);
-
+                    DocumentReference documentReference=firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("mynotes").document(data.getStringExtra("noteid"));
+                    Map<String,Object> note=new HashMap<>();
+                    note.put("title",ntitle);
+                    note.put("content",ncontent);
                     documentReference.set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
-                            CreateNotes.super.finish();
-                            startActivity(new Intent(CreateNotes.this,Notes.class));
+                            Toast.makeText(getApplicationContext(),"Note updated",Toast.LENGTH_SHORT).show();
+                            editnoteactivity.super.finish();
+                            startActivity(new Intent(editnoteactivity.this,Notes.class));
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getApplicationContext(),"Failed to create note",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Failed to update",Toast.LENGTH_SHORT).show();
                         }
                     });
+
 
 
                 }
@@ -84,9 +86,7 @@ public class CreateNotes extends AppCompatActivity {
         });
 
 
-
     }
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==android.R.id.home){

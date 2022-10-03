@@ -18,10 +18,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText mloginemail,mloginpassword;
-    private RelativeLayout mgotosignup,mlogin;
-    private TextView mforgot;
-    private FirebaseAuth firebaseAuth;
+     EditText mloginemail,mloginpassword;
+     RelativeLayout mgotosignup,mlogin;
+     TextView mforgot;
+     FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
